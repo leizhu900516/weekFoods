@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # weekfoods
 
 every week foods
@@ -15,7 +14,3 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our 
 [online documentation](https://flutter.dev/docs), which offers tutorials, 
 samples, guidance on mobile development, and a full API reference.
-=======
-# weekFoods
-每周美食app
->>>>>>> c84e0e3717f6a996dc9dc817e6dbc4d5ec9d1aa4
