@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Home.dart';
+import 'My.dart';
 import 'FoodDetail.dart';
 import 'FoodsList.dart';
 /*
@@ -43,8 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     pages = <Widget>[
       HomePage(),
-      FoodsList(),
-      FoodDetail(),
+      MyItemsInfo(),
     ];
   }
 
@@ -64,11 +64,11 @@ class _MyHomePageState extends State<MyHomePage> {
         bottomNavigationBar: BottomNavigationBar(
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-                icon: Icon(Icons.camera),
+                icon: Icon(IconData(0xe615,fontFamily: 'AppIconFont')),//启用iconfont图标
                 title: Text("主页")
             ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.camera),
+                icon: Icon(IconData(0xe616,fontFamily: 'AppIconFont')),
                 title: Text("我的")
             ),
           ],

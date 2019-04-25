@@ -3,9 +3,9 @@
 *
 * */
 import 'package:flutter/material.dart';
-import 'Home.dart';
 import 'FoodDetail.dart';
 import '../main.dart';
+import 'App.dart';
 
 class FoodsList extends StatefulWidget{
   @override
@@ -26,57 +26,42 @@ class _FoodsList extends State<FoodsList>{
         title: Text("列表页")
 
       ),
-      body: ListView(
-        children: <Widget>[
-          GestureDetector(
-            child: Container(
-              margin: EdgeInsets.only(left: 10,right: 10,top: 10,bottom: 10),
-              child:Row(
-                children: <Widget>[
-                  Expanded(child: Container(
-                    decoration: new BoxDecoration(
+      body: ListView.builder(
+        itemCount: 10,
+        itemBuilder: (context,index)=>
+            GestureDetector(
+              child: Container(
+                height: 80,
+                margin: EdgeInsets.only(left: 10,right: 10,top: 10,bottom: 10),
+                child:Row(
+                  children: <Widget>[
+                    Expanded(child: Container(
+                      decoration: new BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('static/images/monday.jpg'),
+                          fit:BoxFit.fill
+                        ),
+                        //        borderRadius: new BorderRadius.circular((20.0)), // 圆角度
+                        borderRadius: BorderRadius.circular((8.0)),
 
-                      //        borderRadius: new BorderRadius.circular((20.0)), // 圆角度
-                      borderRadius: BorderRadius.circular((20.0)),
+                      ),
+  //                    child: Image.asset('static/images/monday.jpg',fit: BoxFit.fill,height: 80,),
+                    ),flex: 1,),
+                    Expanded(
+                      flex: 3,
+                      child: Padding(padding: EdgeInsets.only(left: 10),child: Text("酸辣土豆丝",style: TextStyle(fontSize: 20,),),),
                     ),
-                    child: Image.asset('static/images/monday.jpg',fit: BoxFit.fill,height: 80,),
-                  ),flex: 1,),
-                  Expanded(
-                    flex: 3,
-                    child: Padding(padding: EdgeInsets.only(left: 10),child: Text("酸辣土豆丝",style: TextStyle(fontSize: 20,),),),
-                  ),
-                ],
-              ) ,
+                  ],
+                ) ,
+              ),
+              onTap: (){
+                Navigator.of(context).push(MaterialPageRoute(builder: (_){
+                  return FoodDetail();
+                }));
+              },
             ),
-            onTap: (){
-              Navigator.of(context).push(MaterialPageRoute(builder: (_){
-                return FoodDetail();
-              }));
-            },
-          ),
-          GestureDetector(
-            child: Container(
-              margin: EdgeInsets.only(left: 10,right: 10,top: 10,bottom: 10),
-              child:Row(
-                children: <Widget>[
-                  Expanded(child: Container(
-                    decoration: new BoxDecoration(
 
-                      //        borderRadius: new BorderRadius.circular((20.0)), // 圆角度
-                      borderRadius: BorderRadius.circular((20.0)),
-                    ),
-                    child: Image.asset('static/images/monday.jpg',fit: BoxFit.fill,height: 80,),
-                  ),flex: 1,),
-                  Expanded(
-                    flex: 3,
-                    child: Padding(padding: EdgeInsets.only(left: 10),child: Text("酸辣土豆丝",style: TextStyle(fontSize: 20,),),),
-                  ),
-                ],
-              ) ,
-            ),
-          ),
 
-        ],
       ),
     );
   }

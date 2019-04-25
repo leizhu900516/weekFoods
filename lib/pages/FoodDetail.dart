@@ -90,11 +90,9 @@ class _FoodDetail extends State<FoodDetail>{
           sliver: SliverList(
             delegate: SliverChildListDelegate(
               <Widget>[
+                Text("材料:"),
                 Image.asset("static/images/monday.jpg"),
-                Text("这是描述信息，"),
-                Text("这是描述信息，"),
-                Text("这是描述信息，"),
-                Text("这是描述信息，"),
+                Text("    这道菜非常适合喜欢吃米饭的小伙伴，有机会一定要做一次，跟家人一起分享哦。让我们一起努力吧，加油！！！",softWrap: true),
               ]
             ),
           ),
