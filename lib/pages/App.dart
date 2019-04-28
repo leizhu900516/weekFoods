@@ -3,6 +3,7 @@ import 'Home.dart';
 import 'My.dart';
 import 'FoodDetail.dart';
 import 'FoodsList.dart';
+import 'Publish.dart';
 /*
 * App主页
 * */
@@ -44,11 +45,19 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     pages = <Widget>[
       HomePage(),
+      PublishFood(),
       MyItemsInfo(),
     ];
   }
 
-
+  void GoToPublish(){
+//    setState(() {
+//      this.pages=2;
+//    });
+    Navigator.of(context).push(MaterialPageRoute(builder: (_){
+      return PublishFood();
+    }));
+  }
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -59,27 +68,46 @@ class _MyHomePageState extends State<MyHomePage> {
         splashColor: Colors.yellow,
       ),
 //      routes: ,
-      home: Scaffold(
-        body: pages[_tabIndex],
-        bottomNavigationBar: BottomNavigationBar(
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-                icon: Icon(IconData(0xe615,fontFamily: 'AppIconFont')),//启用iconfont图标
-                title: Text("主页")
+      home:Stack(
+        children: <Widget>[
+          Scaffold(
+            body: pages[_tabIndex],
+            bottomNavigationBar: BottomNavigationBar(
+              items: <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                    icon: Icon(IconData(0xe615,fontFamily: 'AppIconFont')),//启用iconfont图标
+                    title: Text("主页")
+                ),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.assessment),
+                    title: Text("发布")
+                ),
+                BottomNavigationBarItem(
+                    icon: Icon(IconData(0xe616,fontFamily: 'AppIconFont')),
+                    title: Text("我的")
+                ),
+              ],
+              currentIndex: _tabIndex,
+              type: BottomNavigationBarType.fixed,
+              onTap: (index){
+                setState(() {
+                  _tabIndex = index;
+                });
+              },
+            ) ,
+          ),
+          Align(
+            child: Padding(
+                padding: EdgeInsets.only(bottom: 30.0),
+                child: FloatingActionButton(
+                  backgroundColor: Colors.yellow,
+                  child: Icon(IconData(0xe600,fontFamily: 'AppIconFont')),
+                  onPressed: GoToPublish,
+                ),
             ),
-            BottomNavigationBarItem(
-                icon: Icon(IconData(0xe616,fontFamily: 'AppIconFont')),
-                title: Text("我的")
-            ),
-          ],
-          currentIndex: _tabIndex,
-          type: BottomNavigationBarType.fixed,
-          onTap: (index){
-            setState(() {
-              _tabIndex = index;
-            });
-          },
-        ) ,
+            alignment: Alignment.bottomCenter,
+          )
+        ],
       ),
     );
   }
