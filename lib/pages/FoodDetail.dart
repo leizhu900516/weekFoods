@@ -92,7 +92,21 @@ class _FoodDetail extends State<FoodDetail>{
               <Widget>[
                 Text("材料:"),
                 Image.asset("static/images/monday.jpg"),
-                Text("    这道菜非常适合喜欢吃米饭的小伙伴，有机会一定要做一次，跟家人一起分享哦。让我们一起努力吧，加油！！！",softWrap: true),
+                Text("    这道菜非常适合喜欢吃米饭的小伙伴，有机会一定要做一次，跟家人一起分享哦。让我们一起努力吧，加油！！！有机会一定要做一次，跟家人一起分享哦。让我们一起努力吧，加油！！！有机会一定要做一次，"
+                    "跟家人一起分享哦。让我们一起努力吧，加油！！！有机会一定要做一次，跟家人一起分享哦。让我们一起努力吧，加油！！！！有机会一定要做一次，跟家人一起分享哦。让我们一起努力吧，加油！！！",
+                    softWrap: true),
+                RichText(
+                    text: TextSpan(
+                      text: "材料",
+                      style: TextStyle(fontSize: 16.0),
+                      children: [
+                        new TextSpan(
+                            text: '《从flutter入门到放弃》',
+                            style: new TextStyle(color: Colors.redAccent),
+                            recognizer: null),
+                      ]
+                    )
+                )
               ]
             ),
           ),

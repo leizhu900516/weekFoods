@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'FoodDetail.dart';
 import '../main.dart';
 import 'App.dart';
+import 'sqfliteUtils.dart';
 
 class FoodsList extends StatefulWidget{
   @override
@@ -13,6 +14,22 @@ class FoodsList extends StatefulWidget{
 }
 
 class _FoodsList extends State<FoodsList>{
+  SqfLiteTool sqflitetool = new SqfLiteTool();
+  
+  
+  @override
+  void initState(){
+    super.initState();
+    insertData();
+    print("插入成功");
+  }
+  
+  void insertData() async {
+    await sqflitetool.openSqfLite();
+    await sqflitetool.insert(Foods(0,'酸辣土豆丝','陈华超','这是一个内容','https://i3.meishichina.com/attachment/mofang/2019/04/22/20190422155592442723610169539.jpg'));
+    await sqflitetool.close();
+  }
+  
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     title: Text("主页")
                 ),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.assessment),
+                    icon: Icon(Icons.add,color: Colors.white,),
                     title: Text("发布")
                 ),
                 BottomNavigationBarItem(

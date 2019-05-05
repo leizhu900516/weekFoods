@@ -11,6 +11,13 @@ class HomePage extends StatefulWidget{
 }
 
 class _HomePage extends State<HomePage>{
+
+
+  @override
+  void initState(){
+    print("初始化");
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
