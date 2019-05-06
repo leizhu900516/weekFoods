@@ -5,6 +5,7 @@
 import 'package:flutter/material.dart';
 import 'FoodsList.dart';
 
+
 class HomePage extends StatefulWidget{
   @override
   _HomePage createState()=> _HomePage();
@@ -23,14 +24,26 @@ class _HomePage extends State<HomePage>{
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Row(
+        title:Row(
           children: <Widget>[
-           Text("首页",style: TextStyle(
-             color: Color(0xFF0B131B),
-             fontWeight: FontWeight.bold,
-           ),)
+            Container(
+              width: MediaQuery.of(context).size.width-60,
+              margin: EdgeInsets.all(1.0),
+              padding: EdgeInsets.only(left: 10.0,right: 0,top: 3.0,bottom: 3.0),
+              decoration: BoxDecoration(
+                  color: Color(0xFFD2D2D2),
+                  borderRadius: BorderRadius.all(Radius.circular(15.0))
+              ),
+              child: Row(
+                children: <Widget>[
+                  Icon(Icons.search),
+                  Text("搜索"),
+                ],
+              ),
+            ),
+            Icon(IconData(0xe616,fontFamily: 'AppIconFont'),color: Color(0xFF20242A),),
           ],
-        ),
+        ) ,
       ),
 
       body: GridView.count(

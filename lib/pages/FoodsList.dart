@@ -7,6 +7,7 @@ import 'FoodDetail.dart';
 import '../main.dart';
 import 'App.dart';
 import 'sqfliteUtils.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class FoodsList extends StatefulWidget{
   @override
@@ -22,14 +23,32 @@ class _FoodsList extends State<FoodsList>{
     super.initState();
     insertData();
     print("插入成功");
+    getAllFoods();
+
   }
-  
+
+  void getAllFoods() async {
+    await sqflitetool.openSqfLite();
+    List<Foods> foods = await sqflitetool.queryAll();
+
+    foods.forEach((a)=>print(a));
+  }
+
   void insertData() async {
     await sqflitetool.openSqfLite();
-    await sqflitetool.insert(Foods(0,'酸辣土豆丝','陈华超','这是一个内容','https://i3.meishichina.com/attachment/mofang/2019/04/22/20190422155592442723610169539.jpg'));
+    await sqflitetool.insert(Foods(null,'酸辣土豆丝','陈华超','这是一个内容','https://i3.meishichina.com/attachment/mofang/2019/04/22/20190422155592442723610169539.jpg'));
+
+  }
+  @override
+  void dispose(){
+    closeSqflite();
+  }
+
+  void closeSqflite() async {
     await sqflitetool.close();
   }
-  
+
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -80,6 +99,22 @@ class _FoodsList extends State<FoodsList>{
 
 
       ),
+//        StaggeredGridView.countBuilder(
+//          crossAxisCount: 4,
+//          itemCount: 8,
+//          itemBuilder: (BuildContext context, int index) => new Container(
+//              color: Colors.green,
+//              child: new Center(
+//                child: new CircleAvatar(
+//                  backgroundColor: Colors.white,
+//                  child: new Text('$index'),
+//                ),
+//              )),
+//          staggeredTileBuilder: (int index) =>
+//          new StaggeredTile.count(2, index.isEven ? 2 : 1),
+//          mainAxisSpacing: 4.0,
+//          crossAxisSpacing: 4.0,
+//        ),
     );
   }
 }
