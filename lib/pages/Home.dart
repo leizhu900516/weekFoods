@@ -4,6 +4,7 @@
 */
 import 'package:flutter/material.dart';
 import 'FoodsList.dart';
+import 'SearchPage.dart';
 
 
 class HomePage extends StatefulWidget{
@@ -26,22 +27,29 @@ class _HomePage extends State<HomePage>{
       appBar: AppBar(
         title:Row(
           children: <Widget>[
-            Container(
-              width: MediaQuery.of(context).size.width-60,
-              margin: EdgeInsets.all(1.0),
-              padding: EdgeInsets.only(left: 10.0,right: 0,top: 3.0,bottom: 3.0),
-              decoration: BoxDecoration(
-                  color: Color(0xFFD2D2D2),
-                  borderRadius: BorderRadius.all(Radius.circular(15.0))
+            GestureDetector(
+              child: Container(
+                width: MediaQuery.of(context).size.width-60,
+                margin: EdgeInsets.all(1.0),
+                padding: EdgeInsets.only(left: 10.0,right: 0,top: 3.0,bottom: 3.0),
+                decoration: BoxDecoration(
+                    color: Color(0xFFD2D2D2),
+                    borderRadius: BorderRadius.all(Radius.circular(15.0))
+                ),
+                child: Row(
+                  children: <Widget>[
+                    Icon(Icons.search),
+                    Text("搜索"),
+                  ],
+                ),
               ),
-              child: Row(
-                children: <Widget>[
-                  Icon(Icons.search),
-                  Text("搜索"),
-                ],
-              ),
+              onTap: (){
+                Navigator.of(context).push(MaterialPageRoute(builder: (_){
+                  return Search();
+                }));
+              },
             ),
-            Icon(IconData(0xe616,fontFamily: 'AppIconFont'),color: Color(0xFF20242A),),
+            Icon(IconData(0xe616,fontFamily: 'AppIconFont'),color: Color(0xFF5B6066),),
           ],
         ) ,
       ),

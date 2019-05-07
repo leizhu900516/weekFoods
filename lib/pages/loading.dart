@@ -32,6 +32,7 @@ class _LoadingState extends State<LoadingPage>{
   Widget build(BuildContext context) {
     // TODO: implement build
     return Container(
+      height: MediaQuery.of(context).size.height,
       child: Image.asset("static/images/loading.png"),
     );
   }

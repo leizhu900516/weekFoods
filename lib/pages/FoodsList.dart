@@ -16,8 +16,8 @@ class FoodsList extends StatefulWidget{
 
 class _FoodsList extends State<FoodsList>{
   SqfLiteTool sqflitetool = new SqfLiteTool();
-  
-  
+  List<Foods> foods = [];
+
   @override
   void initState(){
     super.initState();
@@ -29,9 +29,13 @@ class _FoodsList extends State<FoodsList>{
 
   void getAllFoods() async {
     await sqflitetool.openSqfLite();
-    List<Foods> foods = await sqflitetool.queryAll();
+    List<Foods> _foods = await sqflitetool.queryAll();
 
-    foods.forEach((a)=>print(a));
+    _foods.forEach((a)=>print(a));
+    setState(() {
+      foods = _foods;
+    });
+    print(foods.length);
   }
 
   void insertData() async {
@@ -63,7 +67,7 @@ class _FoodsList extends State<FoodsList>{
 
       ),
       body: ListView.builder(
-        itemCount: 10,
+        itemCount: foods.length,
         itemBuilder: (context,index)=>
             GestureDetector(
               child: Container(
@@ -99,6 +103,10 @@ class _FoodsList extends State<FoodsList>{
 
 
       ),
+/*
+* 流式布局
+ */
+
 //        StaggeredGridView.countBuilder(
 //          crossAxisCount: 4,
 //          itemCount: 8,

@@ -132,6 +132,7 @@ class SqfLiteTool {
   // close db
   close() async {
     await database.close();
+    print("* sqflite close。。。");
   }
 
 }

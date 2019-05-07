@@ -33,13 +33,13 @@ class _PublishFoodState extends State<PublishFood>{
   /*图片控件*/
   Widget _ImageView(imgPath) {
     if (imgPath == null) {
-      return Center(
-        child: Text("请选择图片或拍照"),
+      return Container(
+        child: Center(
+          child: Text("请选择图片或拍照"),
+        ),
       );
     } else {
       return Container(
-        height: 100.0,
-        width: 100.0,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(10.0))
         ),
@@ -76,15 +76,42 @@ class _PublishFoodState extends State<PublishFood>{
         padding: EdgeInsets.all(10.0),
         child:Form(
             key: _formKey,
-            child: ListView(
+            child: Column(
               children: <Widget>[
-                _ImageView(_imgPath),
-                Container(
-                  child: RaisedButton(onPressed: _uploadPhoto,child: Text("上传照片"),),
+                GridView.count(
+                  shrinkWrap: true,
+                  primary: false,
+                  crossAxisCount: 3,
+                  children: <Widget>[
+                    _ImageView(_imgPath),
+                    GestureDetector(
+                      child: Container(
+                          padding: EdgeInsets.only(top:35.0 ),
+                          decoration: BoxDecoration(
+                              color: Color(0xFFD2D2D2)
+                          ),
+                          child: Center(
+                            child: Column(
+                              children: <Widget>[
+                                Icon(IconData(0xe654,fontFamily: 'AppIconFont'),color: Color(0xFF5B6066),),
+                                Text("添加照片视频"),
+                              ],
+                            ),
+                          )
+                      ),
+                      onTap:(){
+                        _uploadPhoto();
+                      },
+                    ),
+
+                    Container(
+                      child: RaisedButton(onPressed: _selectPhoto,child: Text("选择照片"),),
+                    ),
+                  ],
                 ),
-                Container(
-                  child: RaisedButton(onPressed: _selectPhoto,child: Text("选择照片"),),
-                ),
+
+
+
                 TextFormField(
                   decoration: InputDecoration(labelText: "标题"),
                   validator: (String value){
