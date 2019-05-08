@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'Home.dart';
+import 'App.dart';
 /*
 * 搜索页面
 * */
@@ -41,7 +42,14 @@ class _SearchState extends State<Search>{
 
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.arrow_back), //# todo 返回上一页
+        leading: GestureDetector(
+          child: Icon(Icons.arrow_back),
+          onTap: (){
+            Navigator.of(context).push(MaterialPageRoute(builder: (_){
+              return MyApp();
+            }));
+          },
+        ), //# todo 返回上一页
         title: searchField,
         actions: <Widget>[
           GestureDetector(
@@ -61,10 +69,17 @@ class _SearchState extends State<Search>{
             Text("最近搜索"),
             Row(
               children: <Widget>[
-                Chip(label: Text('铁锅')),
+                Chip(label: Text('铁锅'),onDeleted: (){
+                  print("delete chip");
+                },),
+                Container(margin: EdgeInsets.only(left: 10.0),),
                 Chip(label: Text('砂锅')),
+                Container(margin: EdgeInsets.only(left: 10.0),),
                 Chip(label: Text('不锈钢')),
               ],
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 10.0),
             ),
             Text("热门搜索"),
             Row(

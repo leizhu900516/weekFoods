@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Home.dart';
-import 'My.dart';
+import 'MyInfo.dart';
 import 'FoodDetail.dart';
 import 'FoodsList.dart';
 import 'Publish.dart';
