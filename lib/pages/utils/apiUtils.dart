@@ -12,9 +12,10 @@ class apiHandle{
   Response response;
   Dio dio = new Dio();
   var url = "http://127.0.0.1:12345/test";
-  get() async{
+  get(params) async{
+    //params = {"param1":"1"}
      try {
-       response = await dio.get(url);
+       response = await dio.get(url,queryParameters: params);
        print(response);
        return response.data.toString();
      } catch(e) {
@@ -23,9 +24,10 @@ class apiHandle{
      }
   }
 
-  post() async {
+  post(params) async {
+    //params = {"param1":"1"}
     try{
-      response = await dio.post(url,data: {"param1":"1"});
+      response = await dio.post(url,data: params);
       return response.data.toString();
     }catch(e){
       print(e);
@@ -37,7 +39,7 @@ class apiHandle{
 }
 
 
-
+//test
 void main() async {
   try {
     Response response = await Dio().get("http://127.0.0.1:12345/test");
